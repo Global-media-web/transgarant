@@ -5,20 +5,25 @@ const gulp = require('gulp'),
       cssNext = require('postcss-cssnext'),
       cssnano = require('cssnano'),
       cssImport = require('postcss-import'),
-      browserSync = require('browser-sync').create();
+      browserSync = require('browser-sync').create(),
+      webpack = require('webpack-stream'),
+      webpackConfig = require('./webpack.config');
 
 const path = {
     src: {
         pug: "./src/views/*.pug",
         css: "./src/css/*.css",
+        js: "./src/js/*.js",
     },
     output: {
         pug: "./build/",
         css: "./build/css/",
+        js: "./build/js/",
     },
     watch: {
         pug: "./src/views/**/*.pug",
         css: "./src/css/**/*.css",
+        js: "./src/js/**/*.js",
     }
 }
 
@@ -43,12 +48,20 @@ gulp.task('css', () =>
         .pipe(browserSync.stream())
 );
 
+gulp.task('js', () => 
+    gulp.src(path.src.js)
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest(path.output.js))
+        .pipe(browserSync.stream())
+);
+
 gulp.task('serve', () => {
     browserSync.init({
         server: './build/'
     });
-    gulp.watch(path.watch.css, gulp.parallel('css'));
     gulp.watch(path.watch.pug, gulp.parallel('pug'));
+    gulp.watch(path.watch.css, gulp.parallel('css'));
+    gulp.watch(path.watch.js, gulp.parallel('js'));
 });
 
-gulp.task('default', gulp.series(gulp.parallel('pug', 'css'), gulp.parallel('serve')));
+gulp.task('default', gulp.series(gulp.parallel('pug', 'css', 'js'), gulp.parallel('serve')));

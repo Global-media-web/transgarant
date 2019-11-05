@@ -13,12 +13,17 @@
     "> 2%"
   ],
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.7",
     "cssnano": "^4.1.10",
+    "glob": "^7.1.5",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-pug": "^4.0.1",
     "postcss-cssnext": "^3.1.0",
-    "postcss-import": "^12.0.1"
+    "postcss-import": "^12.0.1",
+    "webpack-stream": "^5.2.1"
   }
 }
