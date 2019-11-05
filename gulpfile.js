@@ -1,5 +1,6 @@
 const gulp = require('gulp'),
       fs = require('fs'),
+      path = require('path'),
       pug = require('gulp-pug'),
       postCSS = require('gulp-postcss'),
       cssNext = require('postcss-cssnext'),
@@ -9,7 +10,7 @@ const gulp = require('gulp'),
       webpack = require('webpack-stream'),
       webpackConfig = require('./webpack.config');
 
-const path = {
+const paths = {
     src: {
         pug: "./src/views/*.pug",
         css: "./src/css/*.css",
@@ -24,34 +25,35 @@ const path = {
         pug: "./src/views/**/*.pug",
         css: "./src/css/**/*.css",
         js: "./src/js/**/*.js",
-    }
+    },
+    build: "./build/"
 }
 
 gulp.task('pug', () => 
-    gulp.src(path.src.pug)
+    gulp.src(paths.src.pug)
         .pipe(pug({
             pretty: true,
             locals: JSON.parse(fs.readFileSync('./content.json', 'utf-8'))
         }))
-        .pipe(gulp.dest(path.output.pug))
+        .pipe(gulp.dest(paths.output.pug))
         .pipe(browserSync.stream())
 );
 
 gulp.task('css', () =>
-    gulp.src(path.src.css)
+    gulp.src(paths.src.css)
         .pipe(postCSS([
             cssImport({root: './src/css/*.css'}),
             cssNext(),
             cssnano()
         ]))
-        .pipe(gulp.dest(path.output.css))
+        .pipe(gulp.dest(paths.output.css))
         .pipe(browserSync.stream())
 );
 
 gulp.task('js', () => 
-    gulp.src(path.src.js)
+    gulp.src(paths.src.js)
         .pipe(webpack(webpackConfig))
-        .pipe(gulp.dest(path.output.js))
+        .pipe(gulp.dest(paths.output.js))
         .pipe(browserSync.stream())
 );
 
@@ -59,9 +61,23 @@ gulp.task('serve', () => {
     browserSync.init({
         server: './build/'
     });
-    gulp.watch(path.watch.pug, gulp.parallel('pug'));
-    gulp.watch(path.watch.css, gulp.parallel('css'));
-    gulp.watch(path.watch.js, gulp.parallel('js'));
+    gulp.watch(paths.watch.pug, gulp.parallel('pug'));
+    gulp.watch(paths.watch.css, gulp.parallel('css'));
+    gulp.watch(paths.watch.js, gulp.parallel('js'));
 });
 
-gulp.task('default', gulp.series(gulp.parallel('pug', 'css', 'js'), gulp.parallel('serve')));
+gulp.task('clean', (done) => {
+    const removeDir = (dirPath) => {
+        if(!fs.existsSync(dirPath)) return;
+        const list = fs.readdirSync(dirPath, {withFileTypes: true});
+        list.forEach(item => {
+            const rightPath = path.join(dirPath, item.name);
+            item.isDirectory() ? removeDir(rightPath) : fs.unlinkSync(rightPath);
+        })
+        fs.rmdirSync(dirPath);
+    }
+    removeDir(paths.build);
+    done();
+})
+
+gulp.task('default', gulp.series('clean', gulp.parallel('pug', 'css', 'js'), gulp.parallel('serve')));
