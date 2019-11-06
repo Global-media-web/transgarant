@@ -12,7 +12,8 @@ const gulp = require('gulp'),
       imagemin = require('gulp-imagemin'),
       webp = require('imagemin-webp'),
       rename = require('gulp-rename'),
-      mozjpeg = require('imagemin-mozjpeg');
+      mozjpeg = require('imagemin-mozjpeg'),
+      favicon = require('gulp-favicons');
 
 const paths = {
     src: {
@@ -21,6 +22,7 @@ const paths = {
         js: "./src/js/*.js",
         img: "./src/img/**/*.*",
         font: "./src/fonts/**/*.*",
+        favicon: "./src/img/favicon/*.*",
     },
     output: {
         pug: "./build/",
@@ -28,6 +30,7 @@ const paths = {
         js: "./build/js/",
         img: "./build/img/",
         font: "./build/fonts/",
+        favicon: "./build/img/favicon/",
     },
     watch: {
         pug: "./src/views/**/*.pug",
@@ -35,6 +38,7 @@ const paths = {
         js: "./src/js/**/*.js",
         img: "./src/img/**/*.*",
         font: "./src/fonts/**/*.*",
+        favicon: "./src/img/favicon/*.*",
     },
     build: "./build/"
 }
@@ -109,6 +113,29 @@ gulp.task('imgToWebp', () =>
 );
 gulp.task('fonts', () =>
     gulp.src(paths.src.font)
-        .pipe(gulp.dest(paths.build.font))
+        .pipe(gulp.dest(paths.output.font))
+        .pipe(browserSync.stream())
 );
-gulp.task('default', gulp.series('clean', gulp.parallel('pug', 'css', 'js', 'image', 'imgToWebp', 'fonts'), gulp.parallel('serve')));
+gulp.task('favicon', () =>
+    gulp.src(paths.src.favicon)
+        .pipe(favicon({
+            icons: {
+                android: false,
+                appleStartup: false,
+                coast: false,
+                firefox: false,
+                windows: false,
+                yandex: false
+            }
+        }))
+        .pipe(gulp.dest(paths.output.favicon))
+        .pipe(browserSync.stream())
+);
+gulp.task(
+    'default', 
+    gulp.series(
+        'clean', 
+        gulp.parallel('pug', 'css', 'js', 'image', 'imgToWebp', 'fonts', 'favicon'), 
+        gulp.parallel('serve')
+    )
+);

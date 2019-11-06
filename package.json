@@ -20,6 +20,7 @@
     "cssnano": "^4.1.10",
     "glob": "^7.1.5",
     "gulp": "^4.0.2",
+    "gulp-favicons": "^2.3.1",
     "gulp-imagemin": "^6.1.1",
     "gulp-postcss": "^8.0.0",
     "gulp-pug": "^4.0.1",
