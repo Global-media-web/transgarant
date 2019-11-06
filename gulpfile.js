@@ -9,7 +9,9 @@ const gulp = require('gulp'),
       browserSync = require('browser-sync').create(),
       webpack = require('webpack-stream'),
       webpackConfig = require('./webpack.config'),
-      imagemin = require('gulp-imagemin');
+      imagemin = require('gulp-imagemin'),
+      webp = require('imagemin-webp'),
+      rename = require('gulp-rename');
 
 const paths = {
     src: {
@@ -68,7 +70,8 @@ gulp.task('serve', () => {
     gulp.watch(paths.watch.pug, gulp.parallel('pug'));
     gulp.watch(paths.watch.css, gulp.parallel('css'));
     gulp.watch(paths.watch.js, gulp.parallel('js'));
-    gulp.watch(paths.watch.img, gulp.parallel('image'))
+    gulp.watch(paths.watch.img, gulp.parallel('image'));
+    gulp.watch(paths.watch.img, gulp.parallel('imgToWebp'));
 });
 
 gulp.task('clean', (done) => {
@@ -89,6 +92,13 @@ gulp.task('image', () =>
         .pipe(imagemin())
         .pipe(gulp.dest(paths.output.img))
         .pipe(browserSync.stream())
-)
+);
+gulp.task('imgToWebp', () =>
+    gulp.src(paths.src.img)
+        .pipe(imagemin([webp()]))
+        .pipe(rename({extname: '.webp'}))
+        .pipe(gulp.dest(paths.output.img))
+        .pipe(browserSync.stream())
+);
 
-gulp.task('default', gulp.series('clean', gulp.parallel('pug', 'css', 'js', 'image'), gulp.parallel('serve')));
+gulp.task('default', gulp.series('clean', gulp.parallel('pug', 'css', 'js', 'image', 'imgToWebp'), gulp.parallel('serve')));
