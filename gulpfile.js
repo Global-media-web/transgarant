@@ -20,18 +20,21 @@ const paths = {
         css: "./src/css/*.css",
         js: "./src/js/*.js",
         img: "./src/img/**/*.*",
+        font: "./src/fonts/**/*.*",
     },
     output: {
         pug: "./build/",
         css: "./build/css/",
         js: "./build/js/",
         img: "./build/img/",
+        font: "./build/fonts/",
     },
     watch: {
         pug: "./src/views/**/*.pug",
         css: "./src/css/**/*.css",
         js: "./src/js/**/*.js",
         img: "./src/img/**/*.*",
+        font: "./src/fonts/**/*.*",
     },
     build: "./build/"
 }
@@ -73,6 +76,7 @@ gulp.task('serve', () => {
     gulp.watch(paths.watch.js, gulp.parallel('js'));
     gulp.watch(paths.watch.img, gulp.parallel('image'));
     gulp.watch(paths.watch.img, gulp.parallel('imgToWebp'));
+    gulp.watch(paths.watch.font, gulp.parallel('fonts'));
 });
 
 gulp.task('clean', (done) => {
@@ -103,5 +107,8 @@ gulp.task('imgToWebp', () =>
         .pipe(gulp.dest(paths.output.img))
         .pipe(browserSync.stream())
 );
-
-gulp.task('default', gulp.series('clean', gulp.parallel('pug', 'css', 'js', 'image', 'imgToWebp'), gulp.parallel('serve')));
+gulp.task('fonts', () =>
+    gulp.src(paths.src.font)
+        .pipe(gulp.dest(paths.build.font))
+);
+gulp.task('default', gulp.series('clean', gulp.parallel('pug', 'css', 'js', 'image', 'imgToWebp', 'fonts'), gulp.parallel('serve')));
