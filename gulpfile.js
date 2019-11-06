@@ -11,7 +11,8 @@ const gulp = require('gulp'),
       webpackConfig = require('./webpack.config'),
       imagemin = require('gulp-imagemin'),
       webp = require('imagemin-webp'),
-      rename = require('gulp-rename');
+      rename = require('gulp-rename'),
+      mozjpeg = require('imagemin-mozjpeg');
 
 const paths = {
     src: {
@@ -89,7 +90,9 @@ gulp.task('clean', (done) => {
 });
 gulp.task('image', () =>
     gulp.src(paths.src.img)
-        .pipe(imagemin())
+        .pipe(imagemin([
+            mozjpeg({progressive: true, quality: 75})
+        ]))
         .pipe(gulp.dest(paths.output.img))
         .pipe(browserSync.stream())
 );
