@@ -6,7 +6,8 @@ exports.paths = {
         pug: "./src/views/*.pug",
         css: "./src/css/*.css",
         js: "./src/js/*.js",
-        img: "./src/img/**/*.*",
+        img: ["./src/img/**/*.*",
+              "!./src/img/favicon/*.*"],
         font: "./src/fonts/**/*.*",
         favicon: "./src/img/favicon/*.*",
     },
@@ -16,7 +17,7 @@ exports.paths = {
         js: "./build/js/",
         img: "./build/img/",
         font: "./build/fonts/",
-        favicon: "./build/img/favicon/",
+        favicon: "./build/",
     },
     watch: {
         pug: "./src/views/**/*.pug",
@@ -35,7 +36,9 @@ gulp.task(
     'default', 
     gulp.series(
         'clean', 
-        gulp.parallel('pug', 'css', 'js', 'image', 'imgToWebp', 'fonts', 'favicon'), 
+        gulp.parallel('pug', 'css', 'js', 'image', 'imgToWebp', 'fonts', 
+            gulp.series('favicon', 'faviconInjection')
+        ), 
         gulp.parallel('serve')
     )
 );

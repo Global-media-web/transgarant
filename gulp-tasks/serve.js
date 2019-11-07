@@ -6,7 +6,7 @@ gulp.task('serve', () => {
     browserSync.init({
         server: './build/'
     });
-    gulp.watch(paths.watch.pug, gulp.parallel('pug'));
+    gulp.watch(paths.watch.pug, gulp.series('pug', 'faviconInjection'));
     gulp.watch(paths.watch.css, gulp.parallel('css'));
     gulp.watch(paths.watch.js, gulp.parallel('js'));
     gulp.watch(paths.watch.img, gulp.parallel('image'));
