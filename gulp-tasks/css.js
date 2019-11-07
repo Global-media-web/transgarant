@@ -1,6 +1,6 @@
 const gulp = require('gulp'),
       postCSS = require('gulp-postcss'),
-      cssNext = require('postcss-cssnext'),
+      postCSSPresetEnv = require('postcss-preset-env'),
       cssnano = require('cssnano'),
       cssImport = require('postcss-import'),
       browserSync = require('browser-sync'),
@@ -10,7 +10,7 @@ gulp.task('css', () =>
     gulp.src(paths.src.css)
         .pipe(postCSS([
             cssImport({root: './src/css/*.css'}),
-            cssNext(),
+            postCSSPresetEnv(),
             cssnano()
         ]))
         .pipe(gulp.dest(paths.output.css))
