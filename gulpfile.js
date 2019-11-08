@@ -6,10 +6,9 @@ exports.paths = {
         pug: "./src/views/*.pug",
         css: "./src/css/*.css",
         js: "./src/js/*.js",
-        img: ["./src/img/**/*.*",
-              "!./src/img/favicon/*.*"],
+        img: "./src/img/**/*.*",
         font: "./src/fonts/**/*.*",
-        favicon: "./src/img/favicon/*.*",
+        favicon: "./src/favicon/*.*",
     },
     output: {
         pug: "./build/",
@@ -25,7 +24,7 @@ exports.paths = {
         js: "./src/js/**/*.js",
         img: "./src/img/**/*.*",
         font: "./src/fonts/**/*.*",
-        favicon: "./src/img/favicon/*.*",
+        favicon: "./src/favicon/*.*",
     },
     build: "./build/"
 }
