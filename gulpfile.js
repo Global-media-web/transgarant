@@ -1,4 +1,4 @@
-const gulp = require('gulp'),
+const {series, parallel} = require('gulp'),
       requireDir = require('require-dir');
 
 exports.paths = {
@@ -33,13 +33,12 @@ exports.paths = {
 
 requireDir('./gulp-tasks');
 
-gulp.task(
-    'default', 
-    gulp.series(
-        'clean', 
-        gulp.parallel('pug', 'css', 'js', 'image', 'imgToWebp', 'fonts', 
-            gulp.series('favicon', 'faviconInjection')
-        ), 
-        gulp.parallel('serve')
-    )
+exports.default = series('clean', 
+    parallel('pug', 'css', 'js', 'image', 'fonts', 
+        series('favicon', 'faviconInjection')
+    ), 
+    parallel('serve')
 );
+
+exports.build = series('clean', 'pug', 'css', 'js', 'image',
+'imgToWebp', 'fonts', 'favicon', 'faviconInjection', 'zip');
