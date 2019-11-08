@@ -9,7 +9,7 @@ const entry = glob.sync('./src/js/*.js')
 module.exports = {
     entry,
     output: {
-        filename: '[name].min.js',
+        filename: '[name].js',
         path: '/build/js'
     },
     module: {

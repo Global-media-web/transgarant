@@ -1,8 +1,22 @@
 const gulp = require('gulp'),
       webpack = require('webpack-stream'),
-      webpackConfig = require('../webpack.config'),
       browserSync = require('browser-sync'),
+      yargs = require('yargs'),
+      webpackConfig = require('../webpack.config'),
       {paths} = require('../gulpfile');
+
+const config = {
+    development: {
+        mode: 'development',
+        devtool: 'source-map',
+    },
+    production: {
+        mode: 'production',
+        output: { filename: '[name].min.js' }
+    },
+}
+const mode = yargs.argv.mode || 'development';
+Object.assign(webpackConfig, config[mode]);
 
 gulp.task('js', () => 
     gulp.src(paths.src.js)
