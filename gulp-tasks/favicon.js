@@ -29,10 +29,10 @@ gulp.task('favicon', () =>
 );
 
 gulp.task('faviconInjection', () => 
-    gulp.src([path.join(paths.build, '*.html'), `!${path.join(paths.build, OUTPUT_FILENAME)}`])
+    gulp.src([`./${paths.build}/*.html`, `!./${paths.build/OUTPUT_FILENAME}`])
         .pipe(
             inject(
-                gulp.src(path.join(paths.build, OUTPUT_FILENAME)), 
+                gulp.src(path.join(paths.build, OUTPUT_FILENAME)),
                 {
                     starttag: '<head>', 
                     endtag: '<',
