@@ -28,6 +28,7 @@
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
+    "gulp-zip": "^5.0.1",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-webp": "^5.1.0",
     "postcss-import": "^12.0.1",

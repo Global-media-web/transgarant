@@ -9,6 +9,7 @@ exports.paths = {
         img: "./src/img/**/*.*",
         font: "./src/fonts/**/*.*",
         favicon: "./src/favicon/*.*",
+        zip: "./build/**/*",
     },
     output: {
         pug: "./build/",
@@ -17,6 +18,7 @@ exports.paths = {
         img: "./build/img/",
         font: "./build/fonts/",
         favicon: "./build/",
+        zip: "./",
     },
     watch: {
         pug: "./src/views/**/*.pug",
