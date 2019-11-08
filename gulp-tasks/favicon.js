@@ -2,8 +2,10 @@ const gulp = require('gulp'),
       path = require('path'),
       browserSync = require('browser-sync').create(),
       favicon = require('gulp-favicons'),
-      {paths} = require('../gulpfile'),
-      inject = require('gulp-inject');
+      inject = require('gulp-inject'),
+      yargs = require('yargs'),
+      fs = require('fs'),
+      {paths} = require('../gulpfile');
 
 const OUTPUT_FILENAME = 'favicon.html';
 
@@ -32,7 +34,7 @@ gulp.task('faviconInjection', () =>
     gulp.src([`./${paths.build}/*.html`, `!./${paths.build/OUTPUT_FILENAME}`])
         .pipe(
             inject(
-                gulp.src(path.join(paths.build, OUTPUT_FILENAME)),
+                gulp.src(path.join(paths.build, OUTPUT_FILENAME), {allowEmpty: true}),
                 {
                     starttag: '<head>', 
                     endtag: '<',
@@ -42,4 +44,13 @@ gulp.task('faviconInjection', () =>
         )
         .pipe(gulp.dest(paths.build)
     )
+    .on('end', () => {
+        if (yargs.argv.mode === 'production') {
+            try {
+                fs.unlinkSync(path.join(paths.build, OUTPUT_FILENAME));
+            } catch (e) {
+                if(e.code === 'ENOENT') return;
+            }
+        }
+    })
 )
