@@ -9,7 +9,7 @@ const gulp = require('gulp'),
     
 
 const plugins = [
-    cssImport({root: './src/css/*.css'}),
+    cssImport({root: paths.src.css}),
     postCSSPresetEnv({ stage: 0 })
 ];
 
