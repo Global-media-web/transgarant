@@ -10,7 +10,7 @@ gulp.task('css', () =>
     gulp.src(paths.src.css)
         .pipe(postCSS([
             cssImport({root: './src/css/*.css'}),
-            postCSSPresetEnv(),
+            postCSSPresetEnv({ stage: 0 }),
             cssnano()
         ]))
         .pipe(gulp.dest(paths.output.css))
