@@ -13,7 +13,7 @@ gulp.task('pug', () =>
     gulp.src(paths.src.pug)
         .pipe(pug({
             pretty: true,
-            locals: JSON.parse(fs.readFileSync('./content.json', 'utf-8'))
+            locals: JSON.parse(fs.readFileSync('src/views/content.json', 'utf-8'))
         }))
         .pipe(gulpIf(isProductionMode, replace(/(\/js\/.+)(\.js)/g, (match, p1, p2) => `${p1}.min${p2}`)))
         .pipe(gulpIf(isProductionMode, replace(/(\/css\/.+)(\.css)/g, (match, p1, p2) => `${p1}.min${p2}`)))
