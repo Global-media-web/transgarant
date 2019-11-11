@@ -4,6 +4,8 @@
   "description": "Pug/postCSS/Webpack",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm list gulp-cli -g || npm install gulp-cli -g",
+    "postinstall": "gulp createFileStructure",
     "dev": "gulp --mode=development",
     "build": "gulp build --mode=production"
   },
