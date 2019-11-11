@@ -8,7 +8,7 @@ exports.paths = {
         js: "./src/js/*.js",
         img: "./src/img/**/*.*",
         font: "./src/fonts/**/*.*",
-        favicon: "./src/favicon/*.*",
+        favicon: "./src/favicon/",
         zip: "./build/**/*",
     },
     output: {
