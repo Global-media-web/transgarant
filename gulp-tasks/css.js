@@ -3,6 +3,7 @@ const gulp = require('gulp'),
       postCSSPresetEnv = require('postcss-preset-env'),
       cssnano = require('cssnano'),
       cssImport = require('postcss-import'),
+      postCSSNested = require('postcss-nested'),
       browserSync = require('browser-sync'),
       yargs = require('yargs'),
       {paths} = require('../gulpfile');
@@ -10,7 +11,8 @@ const gulp = require('gulp'),
 
 const plugins = [
     cssImport({root: paths.src.css}),
-    postCSSPresetEnv({ stage: 0 })
+    postCSSPresetEnv({ stage: 0 }),
+    postCSSNested(),
 ];
 
 if(yargs.argv.mode === 'production') {
