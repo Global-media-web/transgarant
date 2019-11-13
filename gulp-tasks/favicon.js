@@ -5,6 +5,8 @@ const gulp = require('gulp'),
       fs = require('fs'),
       {paths} = require('../gulpfile');
 
+const FAVICON_DATA_FILE = 'faviconData.json';
+
 gulp.task('favicon', function(done) {
     const blanks = fs.readdirSync(paths.src.favicon);
     if (blanks.length < 1) {
