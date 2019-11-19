@@ -6,6 +6,8 @@ const gulp = require('gulp'),
       postCSSNested = require('postcss-nested'),
       browserSync = require('browser-sync'),
       yargs = require('yargs'),
+      gulpIf = require('gulp-if'),
+      rename = require('gulp-rename'),
       {paths} = require('../gulpfile');
     
 
@@ -15,13 +17,17 @@ const plugins = [
     postCSSNested(),
 ];
 
-if(yargs.argv.mode === 'production') {
+const isProductionMode = yargs.argv.mode === 'production';
+
+if(isProductionMode) {
     plugins.push(cssnano())
 }
 
 gulp.task('css', () =>
     gulp.src(paths.src.css)
         .pipe(postCSS(plugins))
+        .pipe(rename({extname: '.css'}))
+        .pipe(gulpIf(isProductionMode, rename({suffix: '.min'})))
         .pipe(gulp.dest(paths.output.css))
         .pipe(browserSync.stream())
 );

@@ -4,7 +4,7 @@ const {series, parallel} = require('gulp'),
 exports.paths = {
     src: {
         pug: "./src/views/*.pug",
-        css: "./src/css/*.css",
+        css: "./src/css/*.?(p|post)css",
         js: "./src/js/*.js",
         img: "./src/img/**/*.*",
         font: "./src/fonts/**/*.*",
@@ -22,7 +22,7 @@ exports.paths = {
     },
     watch: {
         pug: "./src/views/**/*.pug",
-        css: "./src/css/**/*.css",
+        css: "./src/css/**/*.?(p|post)css",
         js: "./src/js/**/*.js",
         img: "./src/img/**/*.*",
         font: "./src/fonts/**/*.*",
