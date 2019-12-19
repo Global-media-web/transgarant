@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=1280")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="stylesheet", href="css/main.css")
+        link(rel="stylesheet", href="https://unpkg.com/swiper/css/swiper.css")
+        title Document
+    body
+        header.site-header
+            .container
+                .site-header-top
+                    .site-header-logo
+                        a.site-logo(href="/")
+                            img(src="./img/logo.png", alt="logo")
+                            span.site-logo-company
+                                span.site-logo__text
+                                    span.dark-text Транс
+                                    span.light-text Гарант
+                                span.site-logo__sub-text Транспортно-экспедическая компания
+                    .site-header-contacts
+                        a.contact-link.contact-link_tel(href="tel:87182372399") 8 (7182) 37-23-99
+                        a.contact-link.contact-link_mail(href="mailto:s.transgarant@gmail.com") s.transgarant@gmail.com                       
+                .site-header-bottom
+                    nav
+                        menu.site-menu
+                            li
+                                a.site-menu__link(href="#home") Главная
+                            li
+                                a.site-menu__link(href="#services") Услуги
+                            li
+                                a.site-menu__link(href="#about") О компании
+                            li
+                                a.site-menu__link(href="#benefits") Преимущества
+                            li
+                                a.site-menu__link(href="#clients") Наши клиенты
+                            li
+                                a.site-menu__link(href="#contacts") Контакты
+        section.main-screen#home
+            img(src="./img/bg/main-bg.jpg", alt="")
+            div.main-screen__deco-block
+            .container.main-screen__container
+                div.main-screen__content-block
+                    div.main-screen__text
+                        h1.main-screen__title Быстрая доставка любых грузов
+                        div.main-screen__sub-text Казахстан, Россия, Узбекистан, Таджикистан
+                    form.main-screen__form
+                        div.form-row
+                            label.form-input
+                                span Станция отправления
+                                input(type="text")
+                            label.form-input
+                                span Станция назначения
+                                input(type="text")
+                        div.form-row
+                            label.form-input
+                                span Вес
+                                input(type="text")
+                            label.form-input
+                                span Объем
+                                input(type="text")
+                        div.form-row
+                            label.form-input
+                                span Род подвижного состава
+                                input(type="text")
+                            label.form-input
+                                span Код груза
+                                input(type="text")
+                        button.main-btn(data-target="modalOpen") Рассчитать
+        section.our-services#services
+            .container
+                h2.section-title Наши услуги
+                ul.services-list
+                    li.service-item
+                        .service-item-desc
+                            .service-item__image
+                                img(src="/img/icons/train.png", alt="icon")
+                            .service-item__text Предоставление подвижного состава под перевозки
+                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                    li.service-item
+                        .service-item-desc
+                            .service-item__image
+                                img(src="/img/icons/payment-method.png", alt="icon")
+                            .service-item__text Оплата тарифа, дополнительных сборов КЗХ
+                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                    li.service-item
+                        .service-item-desc
+                            .service-item__image
+                                img(src="/img/icons/station.png", alt="icon")
+                            .service-item__text Постоянные отгрузки по станциям Казахстана, Узбекистана, Таджикистана, России и другим
+                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                    li.service-item
+                        .service-item-desc
+                            .service-item__image
+                                img(src="/img/icons/warehouse.png", alt="icon")
+                            .service-item__text Склады временного хранения по станциям Павлодар
+                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                    li.service-item
+                        .service-item-desc
+                            .service-item__image
+                                img(src="/img/icons/traffic-light.png", alt="icon")
+                            .service-item__text Тупики по станциям Павлодара
+                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                    li.service-item
+                        .service-item-desc
+                            .service-item__image
+                                img(src="/img/icons/dust.png", alt="icon")
+                            .service-item__text Таможенная очистка грузов по КЗХ
+                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                    li.service-item
+                        .service-item-desc
+                            .service-item__image
+                                img(src="/img/icons/checklist.png", alt="icon")
+                            .service-item__text Полная перевозка под ключ
+                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                    li.service-item
+                        .service-item-desc
+                            .service-item__image
+                                img(src="/img/icons/wallet.png", alt="icon")
+                            .service-item__text Оплата тарифов стран СНГ
+                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+        section.about#about
+            .container
+                h2.section-title
+                    span Транспортно-экспедиторская компания "Транс
+                    span.light-text Гарант"
+                .about-text-area
+                    p Компания ТОО “ТрансГарант” - это команда профессионалов, имеющих огромный опыт в сфере перевозок, понимающих важность безопасности и оперативности доставки грузов.
+                    p Основанная в 2010 году, наша компания уже успела себя зарекомендовать, как надежного и профессионального делового партнера. Среди наших клиентов индивидуальные предпрениматели, крупные производственные предприятия и торговые сети. Компания ТОО “ТрансГарант” - эксперт в области перевозок, хнающий все особенности грузовых перевозок и понимающий потребности заказчика.
+        section.causes#benefits
+            .container
+                h2.section-title
+                    span 6 причин заказывать перевозки в "Транс
+                    span.light-text Гарант"
+                ul.causes-list
+                    li.cause-item
+                        .cause-item__label
+                            span 01
+                        .cause-item__text(data-title=title onclick="") Доставка груза точно в указанный срок
+                    li.cause-item
+                        .cause-item__label
+                            span 02
+                        .cause-item__text(data-title=title onclick="") Перевозка грузов по Казахстану и за его пределы
+                    li.cause-item
+                        .cause-item__label
+                            span 03
+                        .cause-item__text(data-title=title onclick="") Полный отчет о нахождении груза
+                    li.cause-item
+                        .cause-item__label
+                            span 04
+                        .cause-item__text(data-title=title onclick="") Высокий уровень сервиса железнодорожных перевозок
+                    li.cause-item
+                        .cause-item__label
+                            span 05
+                        .cause-item__text(data-title=title onclick="") Быстрое решение нестандартных ситуаций
+                    li.cause-item
+                        .cause-item__label
+                            span 06
+                        .cause-item__text(data-title=title onclick="") Удобные способы оплаты
+        section.clients#clients
+            .container
+                h2.section-title Наши клиенты
+                .swiper-container
+                    .swiper-wrapper
+                        .swiper-slide
+                            img(src="/img/clients/avast.png", alt="avast")
+                        .swiper-slide
+                            img(src="/img/clients/qiwi.png", alt="qiwi")
+                        .swiper-slide
+                            img(src="/img/clients/cocacola.png", alt="coca-cola")
+                    .swiper-btn-prev
+                    .swiper-btn-next
+        section.write-us
+            .container
+                .write-us-content-block
+                    h2.section-title Расскажите о своей перевозке - 
+                        br 
+                        | и мы предложим лучшие условия!
+                    button.main-btn(data-target="modalOpen") Обратный звонок
+        .map-section#contacts
+            .contact-card
+                h4.contact-card__title ТОО "ТрансГарант"
+                a.contact-link.contact-link_tel(href="tel:87182372399") 8 (7182) 37-23-99
+                a.contact-link.contact-link_mail(href="mailto:s.transgarant@gmail.com") s.transgarant@gmail.com
+                address.contact-link.contact-link_address Казахстан, г.Павлодар, Железнодорожная, 6
+                .contact-card__person-info.person-info
+                    .person-info__name Салтанат Сагиндыкова
+                    a.contact-link.contact-link_skype(href="skype:saltanat6") saltanat6
+                    a.contact-link.contact-link_tel(href="tel:87017288592") 8 701 728 85 92
+                .contact-card__person-info.person-info
+                    .person-info__name Татьяна Горбец
+                    a.contact-link.contact-link_skype(href="skype:saltanat6") saltanat6
+                    a.contact-link.contact-link_tel(href="tel:87182372399") 8 777 162 74 71
+                .contact-card__person-info.person-info
+                    .person-info__name Абдиева Айнур
+                    a.contact-link.contact-link_skype(href="skype:saltanat6") saltanat6
+                    a.contact-link.contact-link_tel(href="tel:87182372399") 8 702 400 08 00
+        footer.site-footer
+            .container.container_footer
+                .copy ТОО “ТрансГарант”. Все права защищены © 2019
+                a.designed(href="http://globalm.kz", target="_blank", rel="noopener noreferrer") Разработано в
+                    img(src="/img/Logo_GM.png", alt="GlobalMedia")
+        form.form-popup
+            .form-title Информация об услугах
+            .form-popup__input.form-popup__input_name
+                input(type="text" placeholder="Ваше имя" required)
+            .form-popup__input.form-popup__input_tel
+                input(type="tel" placeholder="Ваш телефон" required)
+            .form-popup__input.form-popup__input_comment
+                input(type="text" placeholder="Ваш комментарий")
+            button.main-btn Узнать подробнее
+        script(src="https://unpkg.com/swiper/js/swiper.js")
+        script(src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full")
+        script.
+            new Swiper('.swiper-container', {
+                loop: true,
+                slidesPerView: 3,
+                navigation: {
+                    nextEl: '.swiper-btn-next',
+                    prevEl: '.swiper-btn-prev',
+                }
+            });
+            DG.then(function () {
+                const map = DG.map('contacts', {
+                    center: [52.296742, 76.975279],
+                    zoom: 17,
+                    zoomControl: false,
+                    fullscreenControl: false,
+                    scrollWheelZoom: false
+                });
+                const customIcon = DG.icon({
+                    iconUrl: '/img/icons/marker.png',
+                    iconSize: [55, 75],
+                    iconAnchor: [27, 75],
+                    popupAnchor: [-3, -76]
+                });
+                DG.marker([52.2971, 76.9745], {icon: customIcon}).addTo(map);
+            });
+            let isModalOpen = false;
+            const form = document.querySelector('.form-popup');
+            document.addEventListener('click', e => {
+                if (!isModalOpen && e.target.dataset.target === "modalOpen") {
+                    form.classList.add('opened');
+                    isModalOpen = true;
+                }else if (isModalOpen && e.target !== form && !e.target.closest('.form-popup')) {
+                    form.classList.remove('opened');
+                    isModalOpen = false;
+                    e.preventDefault();
+                }
+            })
