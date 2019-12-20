@@ -5,7 +5,7 @@ html(lang="en")
         meta(name="viewport", content="width=1280")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         link(rel="stylesheet", href="css/main.css")
-        link(rel="stylesheet", href="https://unpkg.com/swiper/css/swiper.css")
+        link(rel="stylesheet", href="https://unpkg.com/swiper/css/swiper.min.css")
         title Document
     body
         header.site-header
@@ -26,17 +26,17 @@ html(lang="en")
                     nav
                         menu.site-menu
                             li
-                                a.site-menu__link(href="#home") Главная
+                                a.site-menu__link(href="#home" data-scroll="") Главная
                             li
-                                a.site-menu__link(href="#services") Услуги
+                                a.site-menu__link(href="#services" data-scroll="") Услуги
                             li
-                                a.site-menu__link(href="#about") О компании
+                                a.site-menu__link(href="#about" data-scroll="") О компании
                             li
-                                a.site-menu__link(href="#benefits") Преимущества
+                                a.site-menu__link(href="#benefits" data-scroll="") Преимущества
                             li
-                                a.site-menu__link(href="#clients") Наши клиенты
+                                a.site-menu__link(href="#clients" data-scroll="") Наши клиенты
                             li
-                                a.site-menu__link(href="#contacts") Контакты
+                                a.site-menu__link(href="#contacts" data-scroll="") Контакты
         section.main-screen#home
             img(src="./img/bg/main-bg.jpg", alt="")
             div.main-screen__deco-block
@@ -45,29 +45,29 @@ html(lang="en")
                     div.main-screen__text
                         h1.main-screen__title Быстрая доставка любых грузов
                         div.main-screen__sub-text Казахстан, Россия, Узбекистан, Таджикистан
-                    form.main-screen__form
+                    form.main-screen__form#preCalcForm
                         div.form-row
                             label.form-input
                                 span Станция отправления
-                                input(type="text")
+                                input(type="text" name="departure" required)
                             label.form-input
                                 span Станция назначения
-                                input(type="text")
+                                input(type="text" name="destination" required)
                         div.form-row
                             label.form-input
                                 span Вес
-                                input(type="text")
+                                input(type="text" name="weight" required)
                             label.form-input
                                 span Объем
-                                input(type="text")
+                                input(type="text" name="volume" required)
                         div.form-row
                             label.form-input
                                 span Род подвижного состава
-                                input(type="text")
+                                input(type="text" name="kind" required)
                             label.form-input
                                 span Код груза
-                                input(type="text")
-                        button.main-btn(data-target="modalOpen") Рассчитать
+                                input(type="text" name="code" required)
+                        button.main-btn Рассчитать
         section.our-services#services
             .container
                 h2.section-title Наши услуги
@@ -77,49 +77,49 @@ html(lang="en")
                             .service-item__image
                                 img(src="/img/icons/train.png", alt="icon")
                             .service-item__text Предоставление подвижного состава под перевозки
-                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                        button.main-btn.main-btn_invert(data-target="modalOpen" data-theme="Предоставление подвижного состава под перевозки") Узнать подробнее
                     li.service-item
                         .service-item-desc
                             .service-item__image
                                 img(src="/img/icons/payment-method.png", alt="icon")
                             .service-item__text Оплата тарифа, дополнительных сборов КЗХ
-                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                        button.main-btn.main-btn_invert(data-target="modalOpen" data-theme="Оплата тарифа, дополнительных сборов КЗХ") Узнать подробнее
                     li.service-item
                         .service-item-desc
                             .service-item__image
                                 img(src="/img/icons/station.png", alt="icon")
                             .service-item__text Постоянные отгрузки по станциям Казахстана, Узбекистана, Таджикистана, России и другим
-                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                        button.main-btn.main-btn_invert(data-target="modalOpen" data-theme="Постоянные отгрузки по станциям Казахстана, Узбекистана, Таджикистана, России и другим") Узнать подробнее
                     li.service-item
                         .service-item-desc
                             .service-item__image
                                 img(src="/img/icons/warehouse.png", alt="icon")
                             .service-item__text Склады временного хранения по станциям Павлодар
-                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                        button.main-btn.main-btn_invert(data-target="modalOpen" data-theme="Склады временного хранения по станциям Павлодар") Узнать подробнее
                     li.service-item
                         .service-item-desc
                             .service-item__image
                                 img(src="/img/icons/traffic-light.png", alt="icon")
                             .service-item__text Тупики по станциям Павлодара
-                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                        button.main-btn.main-btn_invert(data-target="modalOpen" data-theme="Тупики по станциям Павлодара") Узнать подробнее
                     li.service-item
                         .service-item-desc
                             .service-item__image
                                 img(src="/img/icons/dust.png", alt="icon")
                             .service-item__text Таможенная очистка грузов по КЗХ
-                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                        button.main-btn.main-btn_invert(data-target="modalOpen" data-theme="Таможенная очистка грузов по КЗХ") Узнать подробнее
                     li.service-item
                         .service-item-desc
                             .service-item__image
                                 img(src="/img/icons/checklist.png", alt="icon")
                             .service-item__text Полная перевозка под ключ
-                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                        button.main-btn.main-btn_invert(data-target="modalOpen" data-theme="Полная перевозка под ключ") Узнать подробнее
                     li.service-item
                         .service-item-desc
                             .service-item__image
                                 img(src="/img/icons/wallet.png", alt="icon")
                             .service-item__text Оплата тарифов стран СНГ
-                        button.main-btn.main-btn_invert(data-target="modalOpen") Узнать подробнее
+                        button.main-btn.main-btn_invert(data-target="modalOpen" data-theme="Оплата тарифов стран СНГ") Узнать подробнее
         section.about#about
             .container
                 h2.section-title
@@ -177,7 +177,7 @@ html(lang="en")
                     h2.section-title Расскажите о своей перевозке - 
                         br 
                         | и мы предложим лучшие условия!
-                    button.main-btn(data-target="modalOpen") Обратный звонок
+                    button.main-btn(data-target="modalOpen" data-theme="Обратный звонок") Обратный звонок
         .map-section#contacts
             .contact-card
                 h4.contact-card__title ТОО "ТрансГарант"
@@ -201,7 +201,7 @@ html(lang="en")
                 .copy ТОО “ТрансГарант”. Все права защищены © 2019
                 a.designed(href="http://globalm.kz", target="_blank", rel="noopener noreferrer") Разработано в
                     img(src="/img/Logo_GM.png", alt="GlobalMedia")
-        form.form-popup
+        form.form-popup#simpleForm
             .form-title Информация об услугах
             .form-popup__input.form-popup__input_name
                 input(type="text" placeholder="Ваше имя" required)
@@ -209,18 +209,29 @@ html(lang="en")
                 input(type="tel" placeholder="Ваш телефон" required)
             .form-popup__input.form-popup__input_comment
                 input(type="text" placeholder="Ваш комментарий")
+            input(type='hidden' name='theme')
+            button.main-btn Узнать подробнее
+        form.form-popup#calcForm
+            .form-title Информация об услугах
+            .form-popup__input.form-popup__input_name
+                input(type="text" placeholder="Ваше имя" required)
+            .form-popup__input.form-popup__input_tel
+                input(type="tel" placeholder="Ваш телефон" required)
+            .form-popup__input.form-popup__input_comment
+                input(type="text" placeholder="Ваш комментарий")
+            input(type='hidden' name='departure')
+            input(type='hidden' name='destination')
+            input(type='hidden' name='weight')
+            input(type='hidden' name='volume')
+            input(type='hidden' name='kind')
+            input(type='hidden' name='code')
             button.main-btn Узнать подробнее
         script(src="https://unpkg.com/swiper/js/swiper.js")
         script(src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full")
-        script.
-            new Swiper('.swiper-container', {
-                loop: true,
-                slidesPerView: 3,
-                navigation: {
-                    nextEl: '.swiper-btn-next',
-                    prevEl: '.swiper-btn-prev',
-                }
-            });
+        script(src="https://unpkg.com/imask")
+        script(src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js")
+        script(src="/js/index.js")
+        script. 
             DG.then(function () {
                 const map = DG.map('contacts', {
                     center: [52.296742, 76.975279],
@@ -237,15 +248,3 @@ html(lang="en")
                 });
                 DG.marker([52.2971, 76.9745], {icon: customIcon}).addTo(map);
             });
-            let isModalOpen = false;
-            const form = document.querySelector('.form-popup');
-            document.addEventListener('click', e => {
-                if (!isModalOpen && e.target.dataset.target === "modalOpen") {
-                    form.classList.add('opened');
-                    isModalOpen = true;
-                }else if (isModalOpen && e.target !== form && !e.target.closest('.form-popup')) {
-                    form.classList.remove('opened');
-                    isModalOpen = false;
-                    e.preventDefault();
-                }
-            })

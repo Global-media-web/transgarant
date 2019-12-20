@@ -25,21 +25,30 @@ address {
         justify-content: space-between;
     }
 }
-.site-header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #d0d0d0;
+.site-header {
+    height: 112px;
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        border-bottom: 1px solid #d0d0d0;
+    }
+    &-contacts {
+        display: flex;
+        width: 40%;
+        justify-content: space-between;
+    }
 }
+
 .site-logo {
     display: flex;
     align-items: center;
     text-transform: uppercase;
     text-decoration: none;
     img {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
     }
     &-company {
         display: flex;
@@ -59,11 +68,6 @@ address {
 }
 .light-text {
     color: var(--main-light);
-}
-.site-header-contacts {
-    display: flex;
-    width: 40%;
-    justify-content: space-between;
 }
 .contact-link, .map-section .contact-link {
     color: var(--main-dark);
@@ -111,7 +115,7 @@ address {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    padding: 30px 0;
+    padding: 10px 0;
     &__link {
         margin-left: 30px;
         color: var(--main-dark);
@@ -124,7 +128,7 @@ address {
 }
 .main-screen {
     position: relative;
-    height: 100vh;
+    height: calc(100vh - 112px);
     img {
         width: 100%;
         height: 100%;
@@ -177,6 +181,7 @@ address {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    width: 100%;
 }
 .form-input {
     display: flex;
