@@ -202,6 +202,7 @@ html(lang="en")
                 a.designed(href="http://globalm.kz", target="_blank", rel="noopener noreferrer") Разработано в
                     img(src="/img/Logo_GM.png", alt="GlobalMedia")
         form.form-popup#simpleForm
+            button.form-popup__close(type="button")
             .form-title Информация об услугах
             .form-popup__input.form-popup__input_name
                 input(type="text" placeholder="Ваше имя" required)
@@ -212,6 +213,7 @@ html(lang="en")
             input(type='hidden' name='theme')
             button.main-btn Узнать подробнее
         form.form-popup#calcForm
+            button.form-popup__close(type="button")
             .form-title Информация об услугах
             .form-popup__input.form-popup__input_name
                 input(type="text" placeholder="Ваше имя" required)
