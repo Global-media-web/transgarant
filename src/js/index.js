@@ -62,3 +62,21 @@ const scroll = new SmoothScroll('a[href*="#"]', {
     easing: 'easeOutQuad',
     updateURL: false
 });
+
+const serviceList = document.querySelector('.services-list');
+const windowHeight = document.documentElement.clientHeight;
+const animateServiceList = () => {  
+    const coords = serviceList.getBoundingClientRect(); 
+    const topVisible = coords.top > 0 && coords.top < windowHeight;
+    if (topVisible) {
+        const list = serviceList.querySelectorAll('.service-item');
+        let delay = 300;
+        list.forEach(item => {
+            item.style.animationDelay = delay + 'ms';
+            delay += 300;
+            item.classList.add('animatedAppear');
+        })
+        document.removeEventListener('scroll', animateServiceList);
+    }
+}
+document.addEventListener('scroll', animateServiceList);
