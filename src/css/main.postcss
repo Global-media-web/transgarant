@@ -255,6 +255,13 @@ address {
         height: 270px;
         overflow: hidden;
         margin-bottom: 20px;
+        transition: all .3s;
+        &:hover {
+            box-shadow: 0px 0 7px 0px rgba(0,0,0,0.75);
+            .service-item__image {
+                box-shadow: 0px -2px 5px 0px rgba(0,0,0,0.75);
+            }
+        }
     }
     &__image {
         width: 140px;
@@ -269,6 +276,7 @@ address {
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all .3s;
         img {
             width: 80px;
             height: 80px;
